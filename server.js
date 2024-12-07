@@ -81,5 +81,5 @@ app.post('/freezekamoflase', async (req, res) => {
 // Start the server and connect to WhatsApp
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-    connectToWhatsApp();
+    startWhatsApp();
 });

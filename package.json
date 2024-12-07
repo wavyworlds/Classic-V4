@@ -1,0 +1,17 @@
+{
+  "name": "AnggazyyDev",
+  "version": "12.0.0",
+  "description": "Made By Anggazyy Mods",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "AnggazyyDev",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "1.19.0"
+ 
+  
+  }
+}

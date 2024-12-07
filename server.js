@@ -1,4 +1,4 @@
-const { WAConnection, MessageType } = require('baileys');
+const { WAConnection, MessageType } = require("baileys");
 const fs = require('fs');
 const express = require('express');
 

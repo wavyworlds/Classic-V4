@@ -11,7 +11,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "body-parser": "1.19.0"
- 
+    "baileys": "npm:@whiskeysockets/baileys@^6.6.7",
+
   
   }
 }

@@ -8,32 +8,31 @@ const SESSION_FILE_PATH = './session.json';
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
-
-
-async function connectToWhatsApp() {
+async function startWhatsApp() {
     const { state, saveCreds } = await useMultiFileAuthState('auth_info');
 
-    const conn = makeWASocket({
+    const sock = makeWASocket({
         printQRInTerminal: true,
         auth: state,
     });
 
-    conn.ev.on('creds.update', saveCreds);
+    sock.ev.on('creds.update', saveCreds);
 
-    conn.ev.on('connection.update', (update) => {
+    sock.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect } = update;
         if (connection === 'close') {
-            console.log('Connection closed due to ', lastDisconnect.error);
-            // Reconnect logic can be added here
+            console.log('Connection closed, reconnecting...', lastDisconnect.error);
+            // Handle reconnection logic here
         } else if (connection === 'open') {
-            console.log('Connected to WhatsApp');
+            console.log('Connection opened');
         }
     });
 
-    // Additional event listeners and message handling can be added here
-
-    return conn; // Return the connection instance if needed
+    // Handle other events like QR generation
 }
+
+
+
 // Function to send a freeze message
 async function freezekamoflase(target) {
     await conn.relayMessage(target, {

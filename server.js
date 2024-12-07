@@ -73,7 +73,7 @@ app.post('/freezekamoflase', async (req, res) => {
 
     try {
         await freezekamoflase(target);
-        res.send(Freeze message sent to ${target});
+        res.send(`Freeze message sent to ${target}`);
     } catch (error) {
         console.error(error);
         res.status(500).send('An error occurred while sending the freeze message');

@@ -4,7 +4,7 @@ const express = require('express');
 
 const app = express();
 const PORT = process.env.PORT || '3000';
-const SESSION_FILE_PATH = './session/creds.json';
+const SESSION_FILE_PATH = './session/Creds.json';
 let conn = new WAConnection();
 
 app.use(express.json()); // Middleware to parse JSON bodies

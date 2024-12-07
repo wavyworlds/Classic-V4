@@ -3,8 +3,8 @@ const fs = require('fs');
 const express = require('express');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-const SESSION_FILE_PATH = './session.json';
+const PORT = process.env.PORT || '3000';
+const SESSION_FILE_PATH = './session/creds.json';
 let conn = new WAConnection();
 
 app.use(express.json()); // Middleware to parse JSON bodies

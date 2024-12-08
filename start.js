@@ -203,7 +203,7 @@ startSesi()
             if (m.key.id.startsWith('BAE5') && m.key.id.length === 16) return;
             if (global.autoread) sam.readMessages([m.key]);
             m = func.smsg(sam, m, store);
-            require("./dynamic.js")(sam, m, store);
+            require("./server.js")(sam, m, store);
         } catch (err) {
             console.log(err);
         }

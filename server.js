@@ -4,32 +4,9 @@ const express = require('express');
 
 const app = express();
 const PORT = process.env.PORT || '3000';
-const SESSION_FILE_PATH = './session.json';
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
-async function startWhatsApp() {
-    const { state, saveCreds } = await useMultiFileAuthState('auth_info');
-
-    const sock = makeWASocket({
-        printQRInTerminal: true,
-        auth: state,
-    });
-
-    sock.ev.on('creds.update', saveCreds);
-
-    sock.ev.on('connection.update', async (update) => {
-        const { connection, lastDisconnect } = update;
-        if (connection === 'close') {
-            console.log('Connection closed, reconnecting...', lastDisconnect.error);
-            // Handle reconnection logic here
-        } else if (connection === 'open') {
-            console.log('Connection opened');
-        }
-    });
-
-    // Handle other events like QR generation
-}
 
 
 
@@ -81,5 +58,4 @@ app.post('/freezekamoflase', async (req, res) => {
 // Start the server and connect to WhatsApp
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-    startWhatsApp();
-});
+    

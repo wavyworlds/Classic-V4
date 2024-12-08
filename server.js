@@ -1,4 +1,4 @@
-const { default: makeWASocket, useMultiFileAuthState } = require('baileys');
+
 const fs = require('fs');
 const express = require('express');
 
@@ -6,9 +6,6 @@ const app = express();
 const PORT = process.env.PORT || '3000';
 
 app.use(express.json()); // Middleware to parse JSON bodies
-
-
-
 
 // Function to send a freeze message
 async function freezekamoflase(target) {
@@ -58,13 +55,4 @@ app.post('/freezekamoflase', async (req, res) => {
 // Start the server and connect to WhatsApp
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-    
-//end of output
-let file = require.resolve(__filename)
-fs.watchFile(file, () => {
-	fs.unwatchFile(file)
-	console.log(chalk.redBright(`Update ${__filename}`))
-	delete require.cache[file]
-	require(file)
-})
- 
+}); // Ensure this closing brace matches the opening brace of the app.listen function

@@ -1,4 +1,5 @@
 require("./global")
+const crypto = require('node:crypto')
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 const delay = ms => (ms) && new Promise(resolve => setTimeout(resolve, ms))

@@ -2,7 +2,7 @@
 # 🪀 KING SAM CRASH API
 
 ---
-- **This api was made by my team with for learning purposes**
+- **This api was made by my team for learning purposes**
 
 ---
 

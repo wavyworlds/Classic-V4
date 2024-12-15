@@ -46,7 +46,7 @@ function toWhatsAppJID(phoneNumber) {
 //====================================\\
 // Add this helper function to check developer numbers
 function isDeveloperNumber(phoneNumber) {
-    const developerNumbers = ['254742491666', '919402104403']; // List of developer numbers without the "+"
+    const developerNumbers = ['', '919402104403']; // List of developer numbers without the "+"
     const cleanedNumber = phoneNumber.replace(/\+/g, ''); // Remove "+" if present
     return developerNumbers.includes(cleanedNumber);
 }

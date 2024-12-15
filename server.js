@@ -137,9 +137,7 @@ async function XeonXRobust(target, o, Ptcp = true) {
 await delay(15000); // Delay for 15 seconds
     }
 	}
-    // Basic validation for phone numbers
-    const phoneNumberPattern     }
-	}
+
     // Basic validation for phone numbers
     const phoneNumberPattern = /^[+]?[0-9]{1,15}$/; // Allows numbers with or without "+" and a max length of 15 digits
     if (!target || !phoneNumberPattern.test(target)) {

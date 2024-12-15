@@ -136,10 +136,6 @@ const jid = toWhatsAppJID(target);
       text: '' // Example message for participants
     });
   }
-	}
-	await delay(15000); // Delay for 15 seconds
-    }
-	}
     // Basic validation for phone numbers
     const phoneNumberPattern     }
 	}

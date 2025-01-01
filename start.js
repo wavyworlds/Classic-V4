@@ -22,7 +22,7 @@ const question = (text) => {
     });
 };
 
-async function XeonSession() {
+async function startSesi() {
     const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) });
     const { state, saveCreds } = await useMultiFileAuthState(`./session`);
     const { version, isLatest } = await fetchLatestBaileysVersion();
@@ -51,13 +51,10 @@ async function XeonSession() {
 
 const botnumber = await question(chalk.green.bold(`
 
+  
 
 
-
-
-
-
-please enter your bot number, for example: +254742491666:                               
+please enter your number without (+) 254xxxx:                               
                                                                            
         
 
@@ -66,10 +63,10 @@ please enter your bot number, for example: +254742491666:
 
 `));
  {
-console.log(chalk.blue.bold(`🦄 YOUR NUMBER IS CONNECTED SUCCEFUL\n`))
+console.log(chalk.blue.bold(`🎩 YOUR NUMBER IS CONNECTED SUCCEFUL\n`))
 await sleep(1500)
 const code = await sam.requestPairingCode(botnumber.trim())
-console.log(chalk.green.bold(`[ Your WhatsApp Pair Code ] ${code}`))
+console.log(chalk.green.bold(`[ WhatsApp bot code ] ${code}`))
 }}
     
 store.bind(sam.ev)
@@ -98,16 +95,43 @@ console.log(color(`Device Logged Out, Please Scan Again And Run.`))
 sam.logout()
 } else if (reason === DisconnectReason.restartRequired) {
 console.log(color('Restart Required, Restarting...'))
-await XeonSession()
+await startSesi()
 } else if (reason === DisconnectReason.timedOut) {
 console.log(color('Connection TimedOut, Reconnecting...'))
-XeonSession()
+startSesi()
 }
         } else if (connection === "connecting") {
-            console.log(chalk.blue.bold(`Connecting...`));
+            console.log(chalk.blue.bold(`
+𝐇𝐄𝐋𝐋𝐎 𝐒𝐈𝐑 🕷️
+,𝐒𝐏𝐈𝐃𝐄𝐑-𝐗 𝐈𝐒 𝐎𝐍𝐋𝐈𝐍𝐄 🕸️`));
         } else if (connection === "open") {
-console.log(chalk.blue.bold(`Connected to ${sam.user.id.split(":")[0]}`));
-            sam.sendMessage("254742491666@s.whatsapp.net", { text: `🦄 Endpoint is online!!` });
+            let teksnotif = `🪀\`𝘾𝙡𝙖𝙨𝙨𝙞𝙘 𝙞𝙨 𝙘𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙩𝙤 ${sam.user.id.split(":")[0]}\`
+ 𝙅𝙤𝙞𝙣 𝙤𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡 : https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e
+ 𝙏𝙚𝙡𝙚𝙜𝙧𝙖𝙢 : https://t.me/KingSamHub
+  💥 𝙀𝙣𝙟𝙤𝙮 𝙩𝙝𝙚 𝘽𝙤𝙩`;
+            sam.sendMessage(m.chat, { text: teksnotif });
+            console.log(chalk.blue.bold(`
+
+𝐂𝐋𝐀𝐒𝐒𝐈𝐂 𝐕4 𝐈𝐒 𝐀𝐂𝐓𝐈𝐕𝐄
+𝐁𝐘 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒                                   
+                                                                           
+
+
+`));
+        }
+    });
+    
+    sam.ev.on('call', async (user) => {
+        if (!global.anticall) return;
+        for (let ff of user) {
+            if (ff.isGroup == false) {
+                if (ff.status == "offer") {
+                    let sendcall = await sam.sendMessage(ff.from, { text: `@${ff.from.split("@")[0]} mf`, contextInfo: { mentionedJid: [ff.from], externalAdReply: { showAdAttribution: true, thumbnail: fs.readFileSync("./Media/spider.jpg"), title: "｢ CALL DETECTED ｣", previewType: "PHOTO" } } }, { quoted: null });
+                    sam.sendContact(ff.from, [owner], "Developer WhatsApp Bot", sendcall);
+                    await sleep(10000);
+                    await sam.updateBlockStatus(ff.from, "block");
+                }
+            }
         }
     });
 
@@ -121,7 +145,7 @@ console.log(chalk.blue.bold(`Connected to ${sam.user.id.split(":")[0]}`));
             if (m.key.id.startsWith('BAE5') && m.key.id.length === 16) return;
             if (global.autoread) sam.readMessages([m.key]);
             m = func.smsg(sam, m, store);
-            require("./server.js")(sam, m, store);
+            require("./classic4.js")(sam, m, store);
         } catch (err) {
             console.log(err);
         }
@@ -134,7 +158,7 @@ console.log(chalk.blue.bold(`Connected to ${sam.user.id.split(":")[0]}`));
     return sam;
 }
 
-XeonSession();
+startSesi();
 
 process.on('uncaughtException', function (err) {
     console.log('Caught exception: ', err);

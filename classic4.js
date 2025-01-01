@@ -6,7 +6,7 @@ function 本KING化変SAM日本KING化変SAM日uEiUlKj9D(){}var 本KING化変SAM
  ┃ ◎ 𝙾𝚆𝙽𝙴𝚁 : 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒
  ┃ ◎ 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝚆𝙰 : https://whatsapp.com/channel/0029VaaqaSp0LKZDuwe5SI3e
  ┃ ◎ 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝚃𝙴𝙻𝙴 : https://t.me/KingclientHub
- ┃ ◎ 𝙶𝙸𝚃𝙷𝚄𝙱 𝙻𝙸𝙽𝙺 : https://github.com/clientue-l1/Classic-V4/fork
+ ┃ ◎ 𝙶𝙸𝚃𝙷𝚄𝙱 𝙻𝙸𝙽𝙺 : https://github.com/Samue-l1/Classic-V4/fork
   ┃ ◎ 𝚈𝙾𝚄𝚃𝚄𝙱𝙴 : https://youtube.com/@king_client_hub?si=qtCZcUNsGVfZuAKa
   ┃ ◎ 𝚃𝙷𝙰𝙽𝙺𝚂 𝙵𝙾𝚁 𝚄𝚂𝙸𝙽𝙶 𝚃𝙷𝙴 𝚂𝙲𝚁𝙸𝙿𝚃
   ┃ ◎ 𝚁𝙴𝙼𝙴𝙼𝙱𝙴𝚁 𝚃𝙾 𝙵𝙾𝙻𝙻𝙾𝚆 𝙰𝙻𝙻 𝚃𝙷𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻𝚂
